@@ -72,7 +72,7 @@ export default function Skills() {
               className="relative px-3 py-2 rounded-xl border border-white/10 bg-white/5 text-sm text-white/80 hover:border-white/20"
             >
               {t}
-              <span className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-r from-fuchsia-500/0 via-white/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition" />
+              <span className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-r from-fuchsia-500/0 via-white/5 to-cyan-500/0 opacity-0 hover:opacity-100 transition" />
             </motion.span>
           ))}
         </div>

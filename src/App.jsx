@@ -3,10 +3,12 @@ import { Menu } from 'lucide-react';
 import Hero3D from './components/Hero3D';
 import CareerTimeline from './components/CareerTimeline';
 import Skills from './components/Skills';
-import Contact from './components/Contact';
+import Showcase from './components/Showcase';
 
 export default function App() {
   const [open, setOpen] = React.useState(false);
+
+  const closeMenu = () => setOpen(false);
 
   return (
     <div className="min-h-screen bg-black text-white font-inter">
@@ -17,6 +19,9 @@ export default function App() {
           <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
             <a href="#timeline" className="hover:text-white">Timeline</a>
             <a href="#skills" className="hover:text-white">Skills</a>
+            <a href="#articles" className="hover:text-white">Blog</a>
+            <a href="#testimonials" className="hover:text-white">Testimonials</a>
+            <a href="#pricing" className="hover:text-white">Pricing</a>
             <a href="#contact" className="hover:text-white">Contact</a>
           </nav>
           <button className="md:hidden" onClick={() => setOpen(v => !v)} aria-label="Menu">
@@ -25,9 +30,12 @@ export default function App() {
         </div>
         {open && (
           <div className="md:hidden border-t border-white/10 px-6 pb-4">
-            <a href="#timeline" className="block py-3 text-white/80">Timeline</a>
-            <a href="#skills" className="block py-3 text-white/80">Skills</a>
-            <a href="#contact" className="block py-3 text-white/80">Contact</a>
+            <a href="#timeline" onClick={closeMenu} className="block py-3 text-white/80">Timeline</a>
+            <a href="#skills" onClick={closeMenu} className="block py-3 text-white/80">Skills</a>
+            <a href="#articles" onClick={closeMenu} className="block py-3 text-white/80">Blog</a>
+            <a href="#testimonials" onClick={closeMenu} className="block py-3 text-white/80">Testimonials</a>
+            <a href="#pricing" onClick={closeMenu} className="block py-3 text-white/80">Pricing</a>
+            <a href="#contact" onClick={closeMenu} className="block py-3 text-white/80">Contact</a>
           </div>
         )}
       </header>
@@ -36,7 +44,7 @@ export default function App() {
         <Hero3D />
         <CareerTimeline />
         <Skills />
-        <Contact />
+        <Showcase />
       </main>
 
       <footer className="border-t border-white/10 py-8 bg-black">
@@ -45,6 +53,9 @@ export default function App() {
           <div className="flex items-center gap-4">
             <a href="#timeline" className="hover:text-white">Timeline</a>
             <a href="#skills" className="hover:text-white">Skills</a>
+            <a href="#articles" className="hover:text-white">Blog</a>
+            <a href="#testimonials" className="hover:text-white">Testimonials</a>
+            <a href="#pricing" className="hover:text-white">Pricing</a>
             <a href="#contact" className="hover:text-white">Contact</a>
           </div>
         </div>
