@@ -7,7 +7,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('Thanks! I will get back to you shortly.');
+    setStatus('Thanks, Indranil will get back to you shortly.');
   };
 
   return (
@@ -23,7 +23,7 @@ export default function Contact() {
           Let’s build something exceptional
         </motion.h2>
         <p className="mt-3 text-center text-white/70">
-          Tell me about your goals. I’ll respond within one business day.
+          Based in Kolkata, India. I typically reply within one business day.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-4">
@@ -62,7 +62,7 @@ export default function Contact() {
         </form>
 
         <p className="mt-10 text-center text-white/50 text-sm">
-          Prefer email? hello@yourdomain.com
+          Prefer email? Add your preferred email address and I’ll reply there.
         </p>
       </div>
     </section>

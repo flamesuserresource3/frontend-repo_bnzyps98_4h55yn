@@ -27,7 +27,7 @@ export default function Hero3D() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/10 backdrop-blur"
           >
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs md:text-sm tracking-wide">Available for WordPress projects</span>
+            <span className="text-xs md:text-sm tracking-wide">Indranil Mondal · Kolkata, India</span>
           </motion.div>
 
           <motion.h1
@@ -46,7 +46,7 @@ export default function Hero3D() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mt-4 max-w-2xl text-base md:text-lg text-white/70"
           >
-            I build scalable WordPress experiences — custom themes, high‑performance page builders, WooCommerce setups, and headless architectures with modern animations.
+            I build scalable WordPress experiences — custom themes, high‑performance page builders, WooCommerce setups, and headless architectures with modern animations. Trained in Full‑Stack Development at Scaler (2021–2023).
           </motion.p>
 
           <motion.div
