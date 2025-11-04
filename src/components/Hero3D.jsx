@@ -1,17 +1,59 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
+import ErrorBoundary from './ErrorBoundary';
+
+function canUseWebGL() {
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    return !!gl;
+  } catch {
+    return false;
+  }
+}
+
+function SplineFallback() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#0b0b0b] via-[#0a0a0a] to-black">
+      <div className="text-center px-6">
+        <div className="mx-auto mb-6 h-24 w-24 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center">
+          <span className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse" />
+        </div>
+        <h2 className="text-2xl md:text-4xl font-bold text-white">Modern Web Experiences</h2>
+        <p className="mt-2 text-white/70 max-w-xl mx-auto">
+          Your browser disabled WebGL or it isn’t available. You’re seeing a clean fallback instead of the interactive 3D scene.
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function Hero3D() {
+  const [webgl, setWebgl] = useState(true);
+
+  useEffect(() => {
+    setWebgl(canUseWebGL());
+  }, []);
+
+  // Use the provided Spline asset from system note
+  const sceneUrl = useMemo(
+    () => 'https://prod.spline.design/Qe6dlWJktclXcUBS/scene.splinecode',
+    []
+  );
+
   return (
-    <section className="relative w-full h-[85vh] md:h-[90vh] overflow-hidden bg-[#0a0a0a]">
+    <section id="hero" className="relative w-full h-[85vh] md:h-[90vh] overflow-hidden bg-[#0a0a0a]">
       {/* 3D Scene */}
-      <div className="absolute inset-0">
-        <Spline
-          scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
-          style={{ width: '100%', height: '100%' }}
-        />
-      </div>
+      <ErrorBoundary fallback={<SplineFallback />}>        
+        <div className="absolute inset-0">
+          {webgl ? (
+            <Spline scene={sceneUrl} style={{ width: '100%', height: '100%' }} />
+          ) : (
+            <SplineFallback />
+          )}
+        </div>
+      </ErrorBoundary>
 
       {/* Soft gradient glows (don't block the 3D) */}
       <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 md:h-96 md:w-96 rounded-full blur-3xl opacity-40 bg-fuchsia-500/30" />
